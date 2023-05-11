@@ -14,11 +14,11 @@ function NavbarLogin() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className='d-flex flex1 gap-2'>
             <input className='form-control text-center' type="search" name="navbarSearch" placeholder='ابحث ...' />
-            <a className='center text-light underline-none' href='/login' >
+            <a href='/login' className='center text-light underline-none' >
               <img className='w-20' src={login} alt="" />
               دخول
             </a>
-            <a className='center text-light underline-none' href='/cart' >
+            <a href='/cart' className='center text-light underline-none'>
               <img className='w-20' src={cart} alt="" />
               العربه
             </a>
