@@ -2,23 +2,24 @@ import React from 'react'
 import SubTitle from '../../Components/Utilty/SubTitle'
 import AdminSidebar from '../../Components/Admin/AdminSidebar'
 import AddSubCategory from '../../Components/Admin/AddSubCategory'
+import { Col, Row } from 'react-bootstrap'
 
 const AdminAddSubCategoryPage = () => {
-  return (
-   <div className='page'>
-   <div className="container mt-3">
-      <div className="row">
-         <div className="col col-3 p-2">
-            <AdminSidebar />
-         </div>
-         <div className="col col-9 p-2">
-            <SubTitle title='اضافه تصنيف فرعى جديد' />
-            <AddSubCategory />
+   return (
+      <div className='page'>
+         <div className="container mt-3">
+            <Row>
+               <Col lg='3' md='3' sm='12' >
+                  <AdminSidebar />
+               </Col>
+               <Col lg='9' md='9' sm='12' >
+                  <SubTitle title='اضافه تصنيف فرعى جديد' />
+                  <AddSubCategory />
+               </Col>
+            </Row>
          </div>
       </div>
-   </div>
-</div>
-  )
+   )
 }
 
 export default AdminAddSubCategoryPage

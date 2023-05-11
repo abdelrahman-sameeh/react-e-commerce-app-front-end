@@ -2,21 +2,22 @@ import React from 'react'
 import AdminSidebar from '../../Components/Admin/AdminSidebar'
 import AdminOrderDetailsContainer from '../../Components/Admin/AdminOrderDetailsContainer'
 import SubTitle from '../../Components/Utilty/SubTitle'
+import { Col, Row } from 'react-bootstrap'
 
 const AdminOrderDetailsPage = () => {
    const order = '12';
    return (
       <div className='page'>
          <div className="container mt-3">
-         <div className="row">
-               <div className="col col-3 p-2">
+            <Row>
+               <Col lg='3' md='3' sm='12' >
                   <AdminSidebar />
-               </div>
-               <div className="col col-9 p-2">
+               </Col>
+               <Col lg='9' md='9' sm='12' >
                   <SubTitle title={`  تفاصيل الطلب ${order} `} />
                   <AdminOrderDetailsContainer />
-               </div>
-            </div>
+               </Col>
+            </Row>
          </div>
       </div>
    )

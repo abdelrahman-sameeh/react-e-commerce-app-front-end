@@ -3,7 +3,7 @@ import React from 'react'
 const AddSubCategory = () => {
    return (
       <div>
-         <form action={`/add/subCategory`} method='post'>
+         <form className='p-3 rounded bg-light' action={`/add/subCategory`} method='post'>
             <div className="my-3">
                <input className='form-control' type="text" placeholder={`اسم التصنيف الفرعى`} name='subCategory' />
             </div>
