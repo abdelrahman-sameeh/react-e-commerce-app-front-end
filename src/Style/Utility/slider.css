@@ -1,0 +1,25 @@
+.slider img{
+   height: 296px !important;
+   width: 373.53px !important;
+   object-fit: contain !important;
+}
+
+.bg-violet{
+   background-color: rgba(139, 68, 206, 0.692) !important;
+}
+.bg-blue{
+   background-color: rgba(68, 160, 206, 0.79) !important;
+}
+.bg-pink{
+   background-color: rgba(206, 68, 204, 0.735) !important;
+}
+.bg-orange{
+   background-color: rgba(223, 155, 60, 0.747) !important;
+}
+
+@media (max-width:670px) {
+   .slider img{
+      height: 261px !important;
+      width: 157.53px !important;
+   }
+}
