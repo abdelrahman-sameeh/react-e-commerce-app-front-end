@@ -1,32 +1,42 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import SubTitle from '../Utilty/SubTitle'
-
-import labtop from '../../Images/labtop.png'
+import HomeCategoryHook from '../../custom hook/category/home-category-hook';
 
 function Category() {
-   const colors = [
-      'rgba(139, 168, 206, 0.5)',
-      'rgba(68, 160, 206, 0.5)',
-      'rgba(206, 68, 204, 0.5)',
-      'rgba(223, 155, 60, 0.5)',
-      'rgba(139, 68, 206, 0.5)',
-   ]
+   
+   let  [isLoading, category, i, colors] = HomeCategoryHook()
+
+
    return (
       <div className="category mt-2">
          <SubTitle title='التصنيفات' btnLink='المزيد' link='category' />
 
-         <div className="categories gap-4 flex-wrap p-2">
-            {colors.map((cat, index) => {
-               return (
-                  <div key={index} className="cat center gap-2 flex-column ">
-                     <div style={{backgroundColor:`${cat}`}} className="image">
-                        <img className='w-100' src={labtop} alt="" />
+         {isLoading === true ?
+            <div className="loading"><div className="lds-dual-ring"></div></div> :
+            <div className="categories gap-4 flex-wrap p-2">
+               {(category && category.data && category.data.length) ? category.data.slice(0, 6).map((cat, index) => {
+                  
+                  // for color index
+                  i++;
+                  if (i === 5) {
+                     i = 0;
+                  }
+
+                  return (
+                     <div key={cat._id} className="cat center gap-2 flex-column ">
+                        <div style={{ backgroundColor: `${colors[i]}` }} className="image">
+                           <img className='w-100' src={cat.image} alt="" />
+                        </div>
+                        <p className='fw-600 fs-5'> {cat.name} </p>
                      </div>
-                     <p className='fw-600 fs-5'> اجهزه منزليه </p>
-                  </div>
-               )
-            })}
-         </div>
+                  )
+               }) :
+                  <p className='text-center fs-1 m-0 bold w-100 rounded bg-light'> There is category </p>}
+            </div>
+         }
+
+
       </div>
    )
 }

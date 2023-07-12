@@ -8,7 +8,7 @@ function BestSale() {
    return (
       <div className="popular">
          <SubTitle title='الاكثر مبيعا' btnLink='المزيد' link='products' />
-         <BestSaleContainer />
+         <BestSaleContainer limit={3} />
       </div>
    )
 }

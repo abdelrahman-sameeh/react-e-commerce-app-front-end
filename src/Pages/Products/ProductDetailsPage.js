@@ -4,8 +4,11 @@ import ProductSlider from '../../Components/ProductDetalisComp/ProductSlider'
 import ProductDescription from '../../Components/ProductDetalisComp/ProductDescription'
 import PeopleComments from '../../Components/ProductDetalisComp/PeopleComments'
 import { Row } from 'react-bootstrap'
+import ProductDetailsHook from '../../custom hook/products/product-details-hook'
 
 const ProductDetailsPage = () => {
+
+
   return (
     <div className='page'>
 
@@ -19,7 +22,7 @@ const ProductDetailsPage = () => {
         {/* start product description */}
         <div className="row my-4" >
           <div className="product-slider col col-4 bg-light">
-            <ProductSlider />
+            <ProductSlider  />
           </div>
           <div className="product-description col col-8 rounded p-3 bg-light" >
             <ProductDescription />
@@ -30,7 +33,7 @@ const ProductDetailsPage = () => {
         <Row>
           <PeopleComments />
         </Row>
-
+      
 
 
       </div>

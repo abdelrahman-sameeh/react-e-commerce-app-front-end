@@ -1,11 +1,12 @@
 import React from 'react'
 import AdminSidebar from '../../Components/Admin/AdminSidebar'
 import SubTitle from '../../Components/Utilty/SubTitle'
-import AddBrandOrCategoryContainer from '../../Components/Admin/AddBrandOrCategoryContainer'
 import { Col, Row } from 'react-bootstrap'
+import AddCategoryContainer from '../../Components/Admin/AddCategoryContainer'
 
 const AdminAddCategoryPage = () => {
    return (
+
       <div className='page'>
          <div className="container mt-3">
             <Row>
@@ -13,8 +14,8 @@ const AdminAddCategoryPage = () => {
                   <AdminSidebar />
                </Col>
                <Col lg='9' md='9' sm='12' >
-                  <SubTitle title='اضافه تصنيف جديد' />
-                  <AddBrandOrCategoryContainer name={'التصنيف'} />
+                  <SubTitle title='اضافه تصنيف جديده' />
+                  <AddCategoryContainer />
                </Col>
             </Row>
          </div>

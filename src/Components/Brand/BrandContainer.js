@@ -1,27 +1,21 @@
 import React from 'react'
 
-import brand1 from '../../Images/brand1.png';
-import brand2 from '../../Images/brand2.png';
-import brand3 from '../../Images/brand3.png';
 
-const BrandContainer = () => {
+const BrandContainer = ({brands}) => {
+
    return (
-      <div className="brands gap-2 grid-180">
-         <div className="brand bg-light">
-            <img  className='w-100' src={brand1} alt="" />
-         </div>
-         <div className="brand bg-light">
-            <img  className='w-100' src={brand2} alt="" />
-         </div>
-         <div className="brand bg-light">
-            <img  className='w-100' src={brand3} alt="" />
-         </div>
-         <div className="brand bg-light">
-            <img  className='w-100' src={brand2} alt="" />
-         </div>
-         <div className="brand bg-light">
-            <img  className='w-100' src={brand3} alt="" />
-         </div>
+      <div style={{flexWrap:'wrap'}} className="brands gap-3 d-flex mb-5">
+         {
+            (brands && brands && brands.length) ?
+               brands.map(brand => {
+                  return <div key={brand._id} style={{height:'150px', width:'150px'}} className="brand">
+                     <img style={{height:'120px', width:'150px', objectFit:'cover', flexWrap:'wrap'}} className='rounded' src={brand.image} alt="حدث خطأ اثناء التحميل" />
+                     <div className="name text-center p-2"> {brand.name} </div>
+                  </div>
+               })
+               : null
+         }
+
       </div>
    )
 }

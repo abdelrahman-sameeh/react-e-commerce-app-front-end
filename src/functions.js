@@ -29,8 +29,16 @@ document.addEventListener('submit', (e) => {
 
 
 
+const resetLocalStorage = () => {
+   localStorage.removeItem('catChecked')
+   localStorage.removeItem('brandChecked')
+   localStorage.removeItem('priceFrom')
+   localStorage.removeItem('priceTo')
 
+}
 
+// call function to reset local storage
+resetLocalStorage()
 
 
 

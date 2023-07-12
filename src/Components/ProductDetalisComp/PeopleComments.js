@@ -5,8 +5,15 @@ import PaginationComponent from '../Utilty/PaginationComponent'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import SubTitle from '../Utilty/SubTitle'
 import LatestOutfitContainer from '../LatestOutfit/LatestOutfitContainer'
+import ProductComp from './ProductComp'
+import ProductDetailsHook from '../../custom hook/products/product-details-hook'
+import { Col, Row } from 'react-bootstrap'
 
 const PeopleComments = () => {
+
+   const [product, images, category, oneBrand, sameProducts] = ProductDetailsHook()
+
+
    return (
       <div className='bg-light p-2 rounded'>
          <div>
@@ -48,7 +55,14 @@ const PeopleComments = () => {
             {/* منتجات قد تعجبك */}
             <SubTitle title='منتجات قد تعجبك' />
 
-            <LatestOutfitContainer />
+            <Row style={{rowGap: '10px'}} className="same-products">
+               {sameProducts && sameProducts.data && sameProducts.data.slice(0, 5).map(product => {
+                  return <Col sm='12' md='6' lg='4'  >
+                     <ProductComp product={product}  />
+                  </Col>
+               })}
+            </Row>
+
 
          </div>
       </div>

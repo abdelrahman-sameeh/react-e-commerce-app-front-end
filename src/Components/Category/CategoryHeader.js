@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const CategoryHeader = () => {
   return (
-   <div style={{overflow:'auto'}} className="category-header d-flex gap-1">
+   <div style={{overflow:'auto'}} className="category-header d-flex gap-1 p-2 rounded ">
       <div style={{cursor:'pointer'}} className="rounded px-2 py-1 category text-black-50"> الكل </div>
       <div style={{cursor:'pointer'}} className="rounded px-2 py-1 category text-black-50"> الكترونيات </div>
       <div style={{cursor:'pointer'}} className="rounded px-2 py-1 category text-black-50"> ملابس </div>
