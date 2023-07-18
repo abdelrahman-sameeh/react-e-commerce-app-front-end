@@ -1,8 +1,9 @@
 /* eslint-disable no-unreachable */
-import { ADD_CATEGORY, GET_ALL_CATEGORY, GET_ERROR, GET_SPECIFIC_CATEGORY } from "../type";
+import { ADD_CATEGORY, GET_ALL_CATEGORY, GET_SPECIFIC_CATEGORY } from "../type";
 
 const initialState = {
    category: [],
+   newCategory: [],
    oneCategory: [],
    loading: true
 }
@@ -20,7 +21,7 @@ const categoryReducer = (state = initialState, action) => {
       case ADD_CATEGORY:
          return {
             ...state,
-            data: action.payload,
+            newCategory: action.payload,
             loading: false
          }
       case GET_SPECIFIC_CATEGORY:
@@ -29,15 +30,6 @@ const categoryReducer = (state = initialState, action) => {
             oneCategory: action.payload,
             loading: false
          }
-
-      case GET_ERROR:
-         return {
-            ...state,
-            error: action.payload,
-            loading: false
-         }
-
-
       default:
          return state
    }

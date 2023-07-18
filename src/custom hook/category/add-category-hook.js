@@ -15,9 +15,9 @@ const AddCategoryHook = () => {
    // if press submit to add new category
    const [isPress, setIsPress] = useState(false)
 
-   const res = useSelector(state => state.category.data)
    const dispatch = useDispatch()
-
+   const res = useSelector(state => state.category.newCategory)
+   console.log(res);
 
    // change name state 
    const handleNameChange = (e) => {
@@ -73,7 +73,8 @@ const AddCategoryHook = () => {
          // add notify with status
          if (res && res.status === 201) {
             notify('تمت الاضافه بنجاح', 'success')
-         } else if (res && res.status !== 201) {
+         }
+         if (res && res.length && res.status !== 201) {
             notify('حدث خطأ اثناء الاضافه', 'error')
          }
 
@@ -81,7 +82,7 @@ const AddCategoryHook = () => {
 
    }, [loading])
 
-   
+
    return [image, loading, isPress, input, handleChangeImage, handleSubmit, handleNameChange]
 }
 

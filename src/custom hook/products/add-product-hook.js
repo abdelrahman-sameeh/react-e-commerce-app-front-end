@@ -41,23 +41,31 @@ const AddProductHook = () => {
    }, [])
 
 
+   const handleChangeProductName = (e) => setProductName(e.target.value)
+   const handleChangeProductDesc = (e) => setProductDescription(e.target.value)
+   const handleChangeProductPriceBefore = (e) => setProductPriceBefore(e.target.value)
+   const handleChangeProductPriceAfter = (e) => setProductPriceAfter(e.target.value)
+   const handleChangeProductQty = (e) => setQty(e.target.value)
+   const handleChangeBrandId = (e) => setBrandId(e.target.value)
+
+
    const allCategory = useSelector(state => state.category.category)
    const allBrands = useSelector(state => state.allBrand.brands)
-   
+
    const animatedComponents = makeAnimated();
-   
-   
-   
+
+
+
    const handleChangeCategory = async (catId) => {
       if (catId !== '0') {
          setCatId(catId)
          await dispatch(getAllSubCategoryOnCategory(catId))
-      } 
+      }
    }
-   
-   
+
+
    let subCategoryForCategory = useSelector(state => state.allSubCategory.subCategory)
-   
+
    // for subCategory on specific category
    let options = (subCategoryForCategory && subCategoryForCategory.data) ? subCategoryForCategory.data.map(item => {
       return {
@@ -67,9 +75,9 @@ const AddProductHook = () => {
       }
    }) : []
 
-   
+
    const productRes = useSelector(state => state.allProduct.oneProduct)
-   
+
 
    // add color to dom and state
    const handelAddColor = (e) => {
@@ -77,8 +85,8 @@ const AddProductHook = () => {
       const color = e.target.previousSibling.value
       if (!colors.includes(color)) {
          setColors([...colors, color])
-      } 
-      
+      }
+
    }
 
    // remove color from DOM and state
@@ -143,25 +151,21 @@ const AddProductHook = () => {
 
 
       // validation
-      if (!productName || !productDescription || Object.keys(images).length < 1 || !productPriceBefore || productPriceBefore < productPriceAfter) {
-         console.log(images);
-         console.log(productName);
-         console.log(productDescription);
-         console.log(productPriceBefore);
-         console.log(productPriceAfter,);
-         console.log(qty);
-         console.log(catId);
-         console.log(selectedSubCategories);
-         console.log(brandId);
-         console.log(loading);
-         notify('من فضلك اكمل البيانات', 'warn')
+      if (!productName || !productDescription || Object.keys(images).length < 1 || !productPriceBefore) {
+         setIsPress(false)
+         notify(' من فضلك اكمل البيانات واملئ الحقول التى تحتوى على *', 'warn')
          return
-      } else {
-         setLoading(true)
-         await dispatch(addProduct(formData))
-         setLoading(false)
       }
 
+      if (productPriceBefore < productPriceAfter) {
+         setIsPress(false)
+         notify('يجب ان يكون السعر قبل اكبر من السعر بعد', 'warn')
+         return
+      }
+
+      setLoading(true)
+      await dispatch(addProduct(formData))
+      setLoading(false)
 
    }
 
@@ -178,18 +182,15 @@ const AddProductHook = () => {
          setQty(0)
          setSelectedSubCategories([])
 
-         setTimeout(() => {
-            setLoading(true)
-         }, 1500);
+         setLoading(true)
          setIsPress(false)
 
          if (productRes) {
             if (productRes.status === 201) {
                notify('تم اضافة المنتج بنجاح', 'success')
-
             } else {
-
                notify('حدث خطأ اثناء عمليه الاضافة', 'error')
+               return
             }
          }
 
@@ -206,16 +207,24 @@ const AddProductHook = () => {
       options,
       animatedComponents,
       setImages,
-      setProductName,
-      setProductDescription,
-      setProductPriceBefore,
-      setProductPriceAfter,
-      setQty,
+      handleChangeProductName,
+      handleChangeProductDesc,
+      handleChangeProductPriceBefore,
+      handleChangeProductPriceAfter,
+      handleChangeProductQty,
+      handleChangeBrandId,
       handleChangeCategory,
       onSelectSubCategories,
       setBrandId,
       handelAddColor,
-      handleSubmit
+      handleSubmit,
+      productName, 
+      productDescription,
+      productPriceBefore,
+      productPriceAfter,
+      qty,
+      catId,
+      brandId
    ]
 
 }

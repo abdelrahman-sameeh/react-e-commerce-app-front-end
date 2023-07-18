@@ -1,7 +1,7 @@
 
 import { useGetData } from "../../hooks/useGetData";
 import { useInsertDataWithImage } from "../../hooks/useInsertData";
-import { ADD_CATEGORY, GET_ALL_CATEGORY, GET_ERROR, GET_SPECIFIC_CATEGORY } from "../type"
+import { ADD_CATEGORY, GET_ALL_CATEGORY, GET_SPECIFIC_CATEGORY } from "../type"
 
 
 export const getAllCategory = (limit, pageNum) => {
@@ -11,12 +11,12 @@ export const getAllCategory = (limit, pageNum) => {
          dispatch({ type: GET_ALL_CATEGORY, payload: res })
       } catch (err) {
          dispatch({
-            type: GET_ERROR,
+            type: GET_ALL_CATEGORY,
             payload: err
          })
       }
    }
-}
+} 
 
 
 export const addCategory = (formData) => {
@@ -31,7 +31,7 @@ export const addCategory = (formData) => {
       } catch (err) {
          console.log(err);
          dispatch({
-            type: GET_ERROR,
+            type: ADD_CATEGORY,
             payload: err
          })
       }
@@ -45,7 +45,7 @@ export const getSpecificCategory = (catId) => {
          dispatch({ type: GET_SPECIFIC_CATEGORY, payload: res })
       } catch (err) {
          dispatch({
-            type: GET_ERROR,
+            type: GET_SPECIFIC_CATEGORY,
             payload: err
          })
       }

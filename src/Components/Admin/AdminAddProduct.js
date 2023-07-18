@@ -18,16 +18,24 @@ const AdminAddProduct = () => {
       options,
       animatedComponents,
       setImages,
-      setProductName,
-      setProductDescription,
-      setProductPriceBefore,
-      setProductPriceAfter,
-      setQty,
+      handleChangeProductName,
+      handleChangeProductDesc,
+      handleChangeProductPriceBefore,
+      handleChangeProductPriceAfter,
+      handleChangeProductQty,
+      handleChangeBrandId,
       handleChangeCategory,
       onSelectSubCategories,
       setBrandId,
       handelAddColor,
-      handleSubmit
+      handleSubmit,
+      productName,
+      productDescription,
+      productPriceBefore,
+      productPriceAfter,
+      qty,
+      catId,
+      brandId
    ] = AddProductHook()
 
 
@@ -41,18 +49,18 @@ const AdminAddProduct = () => {
                <MultiImageInput
                   images={images}
                   setImages={setImages}
-                  theme={'light'}
+                  theme={'light'} 
                   allowCrop={false}
                   max={4}
                />
             </label>
-            <input onChange={(e) => setProductName(e.target.value)} className='mt-2 form-control' name='productName' type="text" placeholder={`اسم المنتج`} />
-            <textarea onChange={(e) => setProductDescription(e.target.value)} className='mt-2 form-control' placeholder='وصف المنتج' defaultValue=''></textarea>
-            <input onChange={(e) => setProductPriceBefore(e.target.value)} className='mt-2 form-control' type="number" placeholder={`السعر قبل الخصم`} />
-            <input onChange={(e) => setProductPriceAfter(e.target.value)} className='mt-2 form-control' type="number" placeholder={`السعر بعد الخصم`} />
-            <input onChange={(e) => setQty(e.target.value)} className='mt-2 form-control' type="number" placeholder={`الكميه الموجودة`} />
+            <input onChange={handleChangeProductName}  value={productName}   className='mt-2 form-control' name='productName' type="text" placeholder={`اسم المنتج`} />
+            <textarea onChange={handleChangeProductDesc}  value={productDescription}  className='mt-2 form-control' placeholder='وصف المنتج' defaultValue=''></textarea>
+            <input onChange={handleChangeProductPriceBefore} value={productPriceBefore}   className='mt-2 form-control' type="number" placeholder={`السعر قبل الخصم`} />
+            <input onChange={handleChangeProductPriceAfter} value={productPriceAfter}   className='mt-2 form-control' type="number" placeholder={`السعر بعد الخصم`} />
+            <input onChange={handleChangeProductQty} value={qty} className='mt-2 form-control' type="number" placeholder={`الكميه الموجودة`} />
 
-            <select onChange={(e) => handleChangeCategory(e.target.value)} className='mt-2 form-control' name="mainCategory">
+            <select onChange={(e) => handleChangeCategory(e.target.value)} value={catId} className='mt-2 form-control' name="mainCategory">
                <option value='0' defaultChecked >التصنيف الرئيسى</option>
                {
                   allCategory && allCategory.data && allCategory.data.map(cat => {
@@ -69,25 +77,24 @@ const AdminAddProduct = () => {
                isMulti
                options={options}
                onChange={onSelectSubCategories}
-
             />
 
-            <select onChange={(e) => setBrandId(e.target.value)} className='mt-2 form-control' name="brand">
+            <select onChange={handleChangeBrandId} value={brandId} className='mt-2 form-control' name="brand">
                <option value='0' >الماركه</option>
                {
                   allBrands && allBrands.data && allBrands.data.map(brand => {
                      return <option key={brand._id} value={brand._id}>{brand.name}</option>
                   })
-               }
+               }  
             </select>
 
 
-            <div className="my-2 product-colors">
+            <div className="my-2 product-colors">  
                <div className="colors">
                   {
                      (colors && colors.length) ? (
                         colors.map((color, index)=>{
-                           return (<label key={index} class="product-color" data-color={color} style={{ backgroundColor: color }}></label>)
+                           return (<label key={index} className="product-color" data-color={color} style={{ backgroundColor: color }}></label>)
                         })
                      ) : null 
                   }
@@ -107,7 +114,7 @@ const AdminAddProduct = () => {
                   {
                      isPress && loading && <Spinner animation={'border'} variant='light' />
                   }
-                  حفظ التعديلات
+                  حفظ التعديلات 
                </button>
             </div>
          </form>
@@ -118,3 +125,4 @@ const AdminAddProduct = () => {
 
 export default AdminAddProduct
 
+ 

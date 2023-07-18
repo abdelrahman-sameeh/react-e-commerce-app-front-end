@@ -3,7 +3,7 @@ import HomePage from "./Pages/Home/HomePage";
 import Footer from "./Components/Utilty/Footer";
 import { BrowserRouter } from 'react-router-dom';
 import LoginPage from "./Pages/Auth/LoginPage";
-import NavbarLogin from "./Components/Utilty/NavbarLogin";
+import NavbarApp from "./Components/Utilty/NavbarApp";
 import SignupPage from "./Pages/Auth/SignupPage";
 import AllCategoryPage from "./Pages/Category/AllCategoryPage";
 import FamousBrandPage from "./Pages/FamousBrands/FamousBrandsPage";
@@ -25,12 +25,17 @@ import UserEditAddressPage from "./Pages/User/UserEditAddressPage";
 import UserProfilePage from "./Pages/User/UserProfilePage";
 import UserModifyProfilePage from "./Pages/User/UserModifyProfilePage";
 import AdminEditProductPage from "./Pages/Admin/AdminEditProductPage";
+import ForgetPassword from "./Pages/Auth/ForgetPasswordPage";
+import VerifyResetCodePage from "./Pages/Auth/VerifyResetCodePage";
+import SetNewPasswordPage from "./Pages/Auth/SetNewPasswordPage";
+
 
 
 function App() {
   return (
     <div className="App">
-      <NavbarLogin />
+      <NavbarApp />
+
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -56,6 +61,9 @@ function App() {
           <Route path="/user/profile" element={<UserProfilePage />} />
           <Route path="/edit-address" element={<UserEditAddressPage />} />
           <Route path="/modify-profile" element={<UserModifyProfilePage />} />
+          <Route path="/forgetPassword" element={<ForgetPassword />} />
+          <Route path="/verifyResetCode" element={<VerifyResetCodePage />} />
+          <Route path="/setNewPassword" element={<SetNewPasswordPage />} />
         </Routes>
       </BrowserRouter>
       <Footer />

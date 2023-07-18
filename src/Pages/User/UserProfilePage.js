@@ -4,6 +4,9 @@ import UserSidebar from '../../Components/User/UserSidebar'
 import UserProfileContainer from '../../Components/User/UserProfileContainer'
 
 const UserProfilePage = () => {
+
+   
+
    return (
       <div className='page'>
          <div className="container">

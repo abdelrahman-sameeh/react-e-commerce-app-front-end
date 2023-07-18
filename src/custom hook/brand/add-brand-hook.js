@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import upload from '../../Images/upload.png'
 import { useDispatch, useSelector } from 'react-redux'
@@ -6,19 +6,21 @@ import { notify } from '../useNotification'
 import { createBrand } from '../../redux/actions/brandAction'
 
 const AddBrandHook = () => {
-  
+
 
    const [brandName, setBrandName] = useState('')
    const [image, setImage] = useState(upload)
    const [selectedFile, setSelectedFile] = useState(null)
    const input = useRef()
    const [loading, setLoading] = useState()
-   
+
    // if press submit to add new category
    const [isPress, setIsPress] = useState(false)
 
-   const res = useSelector(state => state.allBrand.brands)
    const dispatch = useDispatch()
+   const res = useSelector(state => state.allBrand.createBrand)
+
+   console.log(res);
 
 
    // change name state 
@@ -75,7 +77,9 @@ const AddBrandHook = () => {
          // add notify with status
          if (res && res.status === 201) {
             notify('تمت الاضافه بنجاح', 'success')
-         } else if (res && res.status !== 201) {
+         }
+
+         if (res && res.length && res.status !== 201) {
             notify('حدث خطأ اثناء الاضافه', 'error')
          }
 
@@ -83,7 +87,7 @@ const AddBrandHook = () => {
 
    }, [loading])
 
-   
+
    return [image, loading, isPress, input, handleChangeImage, handleSubmit, handleNameChange]
 
 }
