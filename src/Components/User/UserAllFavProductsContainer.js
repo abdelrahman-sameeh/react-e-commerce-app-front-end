@@ -1,17 +1,23 @@
 import React from 'react'
-import { Col, Row } from 'react-bootstrap'
-import UserFavProduct from './UserFavProduct'
+import BestSaleProductHook from '../../custom hook/products/best-sale-products-hook'
+import ProductComp from '../ProductDetalisComp/ProductComp'
+import CRUDProductToWishListHook from '../../custom hook/wishList/CRUD-product-to-wish-list-hook'
 
 const UserAllFavProductsContainer = () => {
+   const [wishListProducts] = CRUDProductToWishListHook()
+   const [products] = BestSaleProductHook()
+   console.log(products);
+
    return (
-      <Row>
-         <Col className='fav-product' lg='4' md='4' sm='6' >
-            <UserFavProduct />
-         </Col>
-         <Col className='fav-product' lg='4' md='4' sm='6' >
-            <UserFavProduct />
-         </Col>
-      </Row>
+      <div className="products my-3 gap-3 grid-300">
+         {
+            wishListProducts && wishListProducts.data && wishListProducts.data.data && wishListProducts.data.data.map(product => {
+               return (
+                  <ProductComp product={product} />
+               )
+            })
+         }
+      </div>
    )
 }
 

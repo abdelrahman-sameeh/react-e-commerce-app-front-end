@@ -242,7 +242,7 @@ input:active {
 /* products gallary slide style */
 .image-gallery-slide {
    width: 372px;
-   height: 470px;
+   height: 350px;
    border-radius: 29px;
 }
 
@@ -284,7 +284,8 @@ label.product-color:hover::after {
 
 .image-gallery-slider,
 .image-gallery-image {
-   width: 300px !important;
+   /* width: 300px !important; */
+   max-width: 300px !important;
    height: 100%;
 }
 
@@ -296,26 +297,35 @@ label.product-color:hover::after {
    .product-description {
       width: 100% !important;
    }
+
+   .product-description>div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+   }
 }
 
 /* end product description */
 
 
 /* start loading  */
-.load{
+.load {
    width: 100%;
    padding: 20px;
    display: flex;
-   justify-content: center ;
-   align-items: center;   
+   justify-content: center;
+   align-items: center;
 }
-.loading{
+
+.loading {
    position: relative;
    height: 80px;
    display: flex;
    justify-content: center;
    align-items: center;
 }
+
 .lds-dual-ring {
    display: inline-block;
    width: 80px;
@@ -348,6 +358,7 @@ label.product-color:hover::after {
    40% {
       transform: rotate(170deg);
    }
+
    60% {
       transform: rotate(190deg);
    }
@@ -361,15 +372,50 @@ label.product-color:hover::after {
 
 
 /* customize multi images */
-label{
+label {
    width: 100% !important;
 }
-.sc-AxirZ.sc-AxiKw.lmMaya{
+
+.sc-AxirZ.sc-AxiKw.lmMaya {
    border: none !important;
    margin: 0 !important;
    border: 1px solid rgb(212, 212, 212) !important;
    border-radius: 4px !important;
 }
-.sc-AxirZ.sc-AxiKw.lmMaya input{
+
+.sc-AxirZ.sc-AxiKw.lmMaya input {
    display: none;
+}
+
+
+/* show class */
+.show-review {
+   height: 185px !important;
+   overflow: visible !important;
+   opacity: 1 !important;
+}
+
+div.close {
+   top: 5px;
+   right: 5px;
+   padding: 0px 11px;
+   background-color: red;
+   color: white;
+   font-size: 18px;
+   border-radius: 7px;
+   cursor: pointer;
+   margin: -3px 0 0px;
+}
+
+
+
+.avatar {
+   font-size: 20px;
+   width: 30px;
+   height: 30px;
+   color: white;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }

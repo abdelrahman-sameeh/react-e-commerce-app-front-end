@@ -2,9 +2,8 @@ import React from 'react'
 import CategoryHeader from '../../Components/Category/CategoryHeader'
 import ProductSlider from '../../Components/ProductDetalisComp/ProductSlider'
 import ProductDescription from '../../Components/ProductDetalisComp/ProductDescription'
-import PeopleComments from '../../Components/ProductDetalisComp/PeopleComments'
+import PeopleComments from '../../Components/ProductDetalisComp/PeopleReviews'
 import { Row } from 'react-bootstrap'
-import ProductDetailsHook from '../../custom hook/products/product-details-hook'
 
 const ProductDetailsPage = () => {
 

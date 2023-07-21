@@ -3,29 +3,38 @@ import ProductDetailsHook from '../../custom hook/products/product-details-hook'
 
 const ProductDescription = () => {
 
-  const  [product, images, category, oneBrand] = ProductDetailsHook()
+  const [product, images, category, oneBrand] = ProductDetailsHook()
+  console.log(product);
 
   return (
-    <div className="">
+    <div className="rounded">
       {
-        product && product.data && category && category.data && oneBrand && oneBrand.data &&
+        product && product.data &&
         <>
-          <div className="product-category mt-3 fs-5 fw-bold"> {category.data.name} </div>
+          {
+            category && category.data &&
+            <div className="product-category mt-3 fs-5 fw-bold"> {category.data.name} </div>
+          }
           <div className="product-name fs-5 fw-bold"> {product.data.title}  </div>
           <div className="product-rate mt-2"> (برودكت) أحمر <span className='text-warning'> {product.data.ratingsQuantity} </span> </div>
-          <div className="product-category text-black-50 mt-3">
-            الماركه
-            : <span className='fw-bold fs-5 text-dark'> {oneBrand.data.name} </span>
-          </div>
-          <div className="product-description mt-3">
+          {
+            oneBrand && oneBrand.data &&
+            <div className="product-category text-black-50 mt-3">
+              الماركه
+              : <span className='fw-bold fs-5 text-dark'> {oneBrand.data.name} </span>
+            </div>
+          }
+          <div className="product-desc mt-3">
             <span className='text-black-50'>المواصفات:</span><br />
             <span className='fs-5 fw-bold'> {product.data.description} </span>
           </div>
-
-          <div className="product-category text-black-50 mt-3">
-            الالوان المتاحه
-            :
-          </div>
+          {
+            product && product.data && product.data.availableColors &&
+            <div className="product-category text-black-50 mt-3">
+              الالوان المتاحه
+              :
+            </div>
+          }
           <form className='addToCart' action={`/product/${product.data._id}`} method="get">
             {/* get from backend */}
 

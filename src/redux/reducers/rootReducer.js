@@ -6,6 +6,8 @@ import subCategoryReducer from './subCategoryReducer';
 import productReducer from './productReducer';
 import authReducer from './authReducer';
 import userReducer from './userReducer';
+import { reviewsReducer } from './reviewsReducer';
+import { wishListReducer } from './wishListReducer';
 
 
 
@@ -16,6 +18,8 @@ const rootReducer = combineReducers({
    allProduct: productReducer,
    auth: authReducer,
    user: userReducer,
+   reviews: reviewsReducer,
+   wishList: wishListReducer,
 })
 
 
