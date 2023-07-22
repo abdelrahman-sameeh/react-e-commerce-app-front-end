@@ -23,6 +23,12 @@ const AdminSidebar = () => {
             <li className='border-bottom'>
                <Link className='btn btn-light w-100 py-3 fw-bold ' to='/admin/addProduct'> اضف منتج </Link>
             </li>
+            <li className='border-bottom'>
+               <Link className='btn btn-light w-100 py-3 fw-bold ' to='/admin/addCoupon'> اضف كوبون </Link>
+            </li>
+            <li className='border-bottom'>
+               <Link className='btn btn-light w-100 py-3 fw-bold ' to='/admin/allCoupon'> كل الكوبونات </Link>
+            </li>
          </ul>
       </div>
    )

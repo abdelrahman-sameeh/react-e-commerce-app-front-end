@@ -28,6 +28,10 @@ import AdminEditProductPage from "./Pages/Admin/AdminEditProductPage";
 import ForgetPassword from "./Pages/Auth/ForgetPasswordPage";
 import VerifyResetCodePage from "./Pages/Auth/VerifyResetCodePage";
 import SetNewPasswordPage from "./Pages/Auth/SetNewPasswordPage";
+import AdminAddCouponPage from "./Pages/Admin/AdminAddCouponPage";
+import AdminAllCouponsPage from "./Pages/Admin/AdminAllCouponsPage";
+import AdminUpdateCouponPage from "./Pages/Admin/AdminUpdateCouponPage";
+import UserAddAddressPage from "./Pages/User/UserAddAddressPage";
 
 
 
@@ -51,6 +55,9 @@ function App() {
           <Route path="/admin/allOrders" element={<AdminAllOrdersPage />} />
           <Route path="/admin/order/:id" element={<AdminOrderDetailsPage />} />
           <Route path="/admin/addBrand" element={<AdminAddBrandPage />} />
+          <Route path="/admin/addCoupon" element={<AdminAddCouponPage />} />
+          <Route path="/admin/allCoupon" element={<AdminAllCouponsPage />} />
+          <Route path="/admin/updateCoupon/:id" element={<AdminUpdateCouponPage />} />
           <Route path="/admin/addCategory" element={<AdminAddCategoryPage />} />
           <Route path="/admin/addSubCategory" element={<AdminAddSubCategoryPage />} />
           <Route path="/admin/addProduct" element={<AdminAddProductPage />} />
@@ -59,7 +66,8 @@ function App() {
           <Route path="/user/favProducts" element={<UserFavProductsPage />} />
           <Route path="/user/addresses" element={<UserAddressesPage />} />
           <Route path="/user/profile" element={<UserProfilePage />} />
-          <Route path="/edit-address" element={<UserEditAddressPage />} />
+          <Route path="/user/addNewAddress" element={<UserAddAddressPage />} />
+          <Route path="/edit-address/:id" element={<UserEditAddressPage />} />
           <Route path="/modify-profile" element={<UserModifyProfilePage />} />
           <Route path="/forgetPassword" element={<ForgetPassword />} />
           <Route path="/verifyResetCode" element={<VerifyResetCodePage />} />

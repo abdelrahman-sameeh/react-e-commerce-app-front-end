@@ -4,7 +4,7 @@ import ProductDetailsHook from '../../custom hook/products/product-details-hook'
 const ProductDescription = () => {
 
   const [product, images, category, oneBrand] = ProductDetailsHook()
-  console.log(product);
+  
 
   return (
     <div className="rounded">

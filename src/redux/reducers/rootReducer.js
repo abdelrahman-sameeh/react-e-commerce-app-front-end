@@ -8,6 +8,8 @@ import authReducer from './authReducer';
 import userReducer from './userReducer';
 import { reviewsReducer } from './reviewsReducer';
 import { wishListReducer } from './wishListReducer';
+import couponReducer from './couponReducer';
+import addressReducer from './addressReducer';
 
 
 
@@ -20,6 +22,8 @@ const rootReducer = combineReducers({
    user: userReducer,
    reviews: reviewsReducer,
    wishList: wishListReducer,
+   coupons: couponReducer,
+   addresses: addressReducer
 })
 
 

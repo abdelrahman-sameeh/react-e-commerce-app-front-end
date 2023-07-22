@@ -1,10 +1,10 @@
 import React from 'react'
-import AdminSidebar from '../../Components/Admin/AdminSidebar'
-import SubTitle from '../../Components/Utilty/SubTitle'
 import { Col, Row } from 'react-bootstrap'
-import AddCategoryContainer from '../../Components/Admin/AddCategoryContainer'
+import SubTitle from '../../Components/Utilty/SubTitle'
+import AdminSidebar from '../../Components/Admin/AdminSidebar'
+import AllCouponsContainer from '../../Components/Admin/AllCouponsContainer'
 
-const AdminAddCategoryPage = () => {
+const AdminAllCouponsPage = () => {
    return (
       <div className='page'>
          <div className="container mt-3">
@@ -13,8 +13,8 @@ const AdminAddCategoryPage = () => {
                   <AdminSidebar />
                </Col>
                <Col lg='9' md='9' sm='12' >
-                  <SubTitle title='اضافه تصنيف جديده' />
-                  <AddCategoryContainer />
+                  <SubTitle title='كل الكوبونات' />
+                  <AllCouponsContainer />
                </Col>
             </Row>
          </div>
@@ -22,4 +22,4 @@ const AdminAddCategoryPage = () => {
    )
 }
 
-export default AdminAddCategoryPage
+export default AdminAllCouponsPage

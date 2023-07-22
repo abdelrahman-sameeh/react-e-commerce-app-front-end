@@ -65,14 +65,20 @@ const UpdateUserDataHook = () => {
          setLoading(true)
          if (updateDataResponse.status === 200) {
             notify('تم تعديل البيانات بنجاح', 'success')
-
-         } else {
-            if (updateDataResponse.data && updateDataResponse.data.status === 'fail') {
-               if (updateDataResponse.data.message === 'User recently changed password! Please login again..') {
-                  notify('تم تغير كلمه السر مأخرا من فضلك سجل الدخول مجددا', 'warn')
-               }
+            // change user in localStorage
+            localStorage.user = JSON.stringify(updateDataResponse.data.data.user)
+         }
+         if (updateDataResponse.data) {
+            if (updateDataResponse.data.message === 'User recently changed password! Please login again..') {
+               notify('تم تغير كلمه السر مأخرا من فضلك سجل الدخول مجددا', 'warn')
             }
          }
+         if (updateDataResponse.data && updateDataResponse.data.errors) {
+            if (updateDataResponse.data.errors[0].msg === 'accept only egypt phone numbers') {
+               notify('ادخل رقم موبايل صحيح', 'error')
+            }
+         }
+
       }
    }, [loading])
 

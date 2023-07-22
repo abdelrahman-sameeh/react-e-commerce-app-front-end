@@ -16,7 +16,7 @@ const UserModifyProfileContainer = () => {
             <input value={phone} onChange={handleChangePhone} className='form-control my-2' type="text" name='userPhone' placeholder='ادخل رقم هاتف مصرى او سعودى' />
             <input className='form-control mb-2' type="text" disabled value='a@gmail.com' />
             <div className="d-flex justify-content-end">
-               <button onClick={handleChangeData} className='btn btn-dark d-flex justify-content-center align-items-center gap-2'> تغير كلمه السر
+               <button onClick={handleChangeData} className='btn btn-dark d-flex justify-content-center align-items-center gap-2'> تعديل
                   {
                      loading && isPress && <Spinner animation='border' variant='light' />
                   }
