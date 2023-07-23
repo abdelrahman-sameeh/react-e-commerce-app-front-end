@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { notify } from '../useNotification'
 import { getAllReviewsInOneProduct, removeOneReview, updateOneReview } from '../../redux/actions/reviewsAction'
 import { useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 const ReviewHook = () => {
 
@@ -78,11 +79,28 @@ const ReviewHook = () => {
    // handle remove method
    const removeReviewResponse = useSelector(state => state.reviews.removeOneReview)
    const handleDeleteReview = async (reviewId) => {
-      setLoading(true)
-      setIsPress(true)
-      await dispatch(removeOneReview(reviewId))
-      setLoading(false)
-      setIsPress(false)
+
+      Swal.fire({
+         title: 'هل انت متأكد?',
+         text: "هل انت متأكد من حذف المراجعه",
+         icon: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         confirmButtonText: 'احذف!',
+         cancelButtonText: 'تراجع'
+
+      }).then( async(result) => {
+         if (result.isConfirmed) {
+            setLoading(true)
+            setIsPress(true)
+            await dispatch(removeOneReview(reviewId))
+            setLoading(false)
+            setIsPress(false)
+         }
+      })
+
+
    }
 
    useEffect(() => {

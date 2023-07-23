@@ -1,11 +1,11 @@
 
 import { ToastContainer } from 'react-toastify'
 import { Spinner } from 'react-bootstrap'
-import AddBrandHook from '../../custom hook/brand/add-brand-hook'
+import AddBrandHook from '../../custom hook/Brand/add-brand-hook'
 
 const AddBrandContainer = () => {
 
-   const [image, loading, isPress, input, handleChangeImage, handleSubmit, handleNameChange] = AddBrandHook() 
+   const [image, loading, isPress, input, handleChangeImage, handleSubmit, handleNameChange] = AddBrandHook()
 
    return (
       <div>

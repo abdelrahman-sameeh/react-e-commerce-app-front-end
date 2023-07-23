@@ -1,10 +1,13 @@
 import React from 'react'
 import ProductDetailsHook from '../../custom hook/products/product-details-hook'
+import AddProductToCartHook from '../../custom hook/cart/add-product-to-cart-hook'
+import { Spinner } from 'react-bootstrap'
 
 const ProductDescription = () => {
 
   const [product, images, category, oneBrand] = ProductDetailsHook()
-  
+
+  const [loading, isPress, handleChangeColor, handleAddProduct] = AddProductToCartHook()
 
   return (
     <div className="rounded">
@@ -41,15 +44,17 @@ const ProductDescription = () => {
             {
               product && product.data && product.data.availableColors.map((color, index) =>
                 <React.Fragment key={index}>
-                  <label htmlFor="red" style={{ backgroundColor: color }} className="phone-color"></label>
-                  <input className='d-none' type="radio" id={color} value={color} />
+                  <label htmlFor="red" for={color} style={{ backgroundColor: color }} className="phone-color"></label>
+                  <input onClick={handleChangeColor} className='d-none' type="radio" id={color} value={color} />
                 </React.Fragment>
               )
             }
 
             <div className='d-flex'>
               <input className='form-control w-25' disabled type="text" value={product.data.price} />
-              <button className='btn btn-dark me-2 '> اضف للعربه </button>
+              <button onClick={handleAddProduct} className='btn btn-dark me-2 '> اضف للعربه
+                {loading && isPress && <Spinner variant='light' animation='border' />}
+              </button>
             </div>
           </form>
         </>

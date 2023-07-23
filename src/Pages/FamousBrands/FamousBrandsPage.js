@@ -4,7 +4,7 @@ import SubTitle from '../../Components/Utilty/SubTitle'
 
 import BrandContainer from '../../Components/Brand/BrandContainer';
 import PaginationComponent from '../../Components/Utilty/PaginationComponent';
-import AllBrandPageHook from '../../custom hook/brand/all-brand-page-hook';
+import AllBrandPageHook from '../../custom hook/Brand/all-brand-page-hook';
 
 
 const FamousBrandPage = () => {

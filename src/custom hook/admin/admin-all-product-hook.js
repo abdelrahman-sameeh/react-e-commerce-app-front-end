@@ -26,7 +26,8 @@ const AdminAllProductHook = () => {
          showCancelButton: true,
          confirmButtonColor: '#3085d6',
          cancelButtonColor: '#d33',
-         confirmButtonText: 'احذف!'
+         confirmButtonText: 'احذف!',
+         cancelButtonText: 'تراجع'
       
       }).then((result) => {
          if (result.isConfirmed) {

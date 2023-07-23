@@ -31,10 +31,13 @@ const AdminEditProductHook = () => {
 
    const dispatch = useDispatch()
 
+   const run = async () => {
+      await dispatch(getSpecificProduct(productId))
+      await dispatch(getAllBrands())
+      await dispatch(getAllCategory())
+   }
    useEffect(() => {
-      dispatch(getSpecificProduct(productId))
-      dispatch(getAllBrands())
-      dispatch(getAllCategory())
+      run()
    }, [])
 
    useEffect(() => {
@@ -93,6 +96,7 @@ const AdminEditProductHook = () => {
    // add color to dom and state
    const handelAddColor = (e) => {
       // add color to DOM
+      console.log(e.target.previousSibling.value);
       const color = e.target.previousSibling.value
       if (!colors.includes(color)) {
          setColors([...colors, color])
@@ -168,9 +172,6 @@ const AdminEditProductHook = () => {
          imageCover = dataURLtoFile(images[0], Math.random() + '.png')
       }
 
-
-      console.log(imageCover);
-
       formData.append('title', productName)
       formData.append('price', productPriceBefore)
       formData.append('priceAfter', productPriceAfter)
@@ -204,10 +205,11 @@ const AdminEditProductHook = () => {
          notify('من فضلك اكمل البيانات', 'warn')
          return
       } else {
-         setTimeout( async() => {
+         setTimeout(async () => {
             setLoading(true)
             await dispatch(updateOneProduct(productId, formData))
             setLoading(false)
+            setIsPress(false)
          }, 1000);
       }
 
@@ -217,17 +219,18 @@ const AdminEditProductHook = () => {
 
 
    const oneUpdated = useSelector(state => state.allProduct.oneUpdated)
+
+
    useEffect(() => {
       if (loading === false) {
-         setIsPress(false)
-         if(oneUpdated.status ===200){
+         if (oneUpdated&& oneUpdated.status === 200) {
             Swal.fire({
                // position: 'top-end',
                icon: 'success',
                title: 'تم التعديل بنجاح',
                showConfirmButton: false,
                timer: 1500
-             })
+            })
          }
       }
    }, [loading])
