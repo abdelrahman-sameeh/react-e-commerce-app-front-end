@@ -10,7 +10,9 @@ import {
    GET_SPECIFIC_PRODUCTS,
    GET_SAME_PRODUCTS,
    DELETE_ONE_PRODUCT,
-   UPDATE_ONE_PRODUCT
+   UPDATE_ONE_PRODUCT,
+   GET_LIST_OF_PRODUCTS_IN_SPECIFIC_CATEGORY,
+   GET_LIST_OF_PRODUCTS_IN_SPECIFIC_BRAND,
 } from "../type";
 
 
@@ -161,7 +163,53 @@ export const getAllProductSearch = (queryString) => {
 
       } catch (err) {
          dispatch({
-            type: GET_ERROR,
+            type: GET_ALL_PRODUCTS,
+            payload: err.response,
+            loading: false
+         })
+      }
+   }
+}
+
+// @decs    get all product that include to specific category
+// method   GET
+// @access  public
+export const getAllProductInCategory = (categoryId, limit, page=1) => {
+   return async (dispatch) => {
+      try {
+         const res = await useGetData(`api/v1/products?category=${categoryId}&limit=${limit}&page=${page}`)
+         dispatch({
+            type: GET_LIST_OF_PRODUCTS_IN_SPECIFIC_CATEGORY,
+            payload: res,
+            loading: false
+         })
+
+      } catch (err) {
+         dispatch({
+            type: GET_LIST_OF_PRODUCTS_IN_SPECIFIC_CATEGORY,
+            payload: err.response,
+            loading: false
+         })
+      }
+   }
+}
+
+// @decs    get all product that include to specific brand
+// method   GET
+// @access  public
+export const getAllProductInBrand = (brandId, limit, page=1) => {
+   return async (dispatch) => {
+      try {
+         const res = await useGetData(`api/v1/products?brand=${brandId}&limit=${limit}&page=${page}`)
+         dispatch({
+            type: GET_LIST_OF_PRODUCTS_IN_SPECIFIC_BRAND,
+            payload: res,
+            loading: false
+         })
+
+      } catch (err) {
+         dispatch({
+            type: GET_LIST_OF_PRODUCTS_IN_SPECIFIC_BRAND,
             payload: err.response,
             loading: false
          })

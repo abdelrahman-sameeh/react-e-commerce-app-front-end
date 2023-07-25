@@ -4,6 +4,7 @@ import { Col, Row } from 'react-bootstrap'
 import UserOrder from './UserOrder'
 
 const UserAllOrdersContainer = () => {
+  cost [] = UserAllOrdersHook()
   return (
     <div>
       <SubTitle title='اهلا عبدالرحمن' />

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 const BrandContainer = ({brands}) => {
@@ -8,10 +9,10 @@ const BrandContainer = ({brands}) => {
          {
             (brands && brands && brands.length) ?
                brands.map(brand => {
-                  return <div key={brand._id} style={{height:'150px', width:'150px'}} className="brand">
+                  return <Link to={`/brand/${brand._id}/products`} key={brand._id} style={{height:'150px', width:'150px', textDecoration: 'none'}} className="brand text-darn">
                      <img style={{height:'120px', width:'150px', objectFit:'cover', flexWrap:'wrap'}} className='rounded' src={brand.image} alt="حدث خطأ اثناء التحميل" />
                      <div className="name text-center p-2"> {brand.name} </div>
-                  </div>
+                  </Link>
                })
                : null
          }

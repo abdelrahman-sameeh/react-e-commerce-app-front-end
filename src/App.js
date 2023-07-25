@@ -32,11 +32,14 @@ import AdminAddCouponPage from "./Pages/Admin/AdminAddCouponPage";
 import AdminAllCouponsPage from "./Pages/Admin/AdminAllCouponsPage";
 import AdminUpdateCouponPage from "./Pages/Admin/AdminUpdateCouponPage";
 import UserAddAddressPage from "./Pages/User/UserAddAddressPage";
-import ChoseAddressPage from "./Pages/User/ChoseeAddressPage";
 
 
 
 function App() {
+  const [isUser, isAdmin, userData] = ProtectedRouteHook()
+  console.log(userData);
+  console.log(isUser);
+  console.log(isAdmin);
   return (
     <div className="App">
       <NavbarApp />
@@ -52,7 +55,6 @@ function App() {
           <Route path="/product/:id" element={<ProductDetailsPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/order/payMethod" element={<PaymentPage />} />
-          <Route path="/order/choseAddress" element={<ChoseAddressPage />} />
           <Route path="/admin/allProducts" element={<AdminAllProductsPage />} />
           <Route path="/admin/allOrders" element={<AdminAllOrdersPage />} />
           <Route path="/admin/order/:id" element={<AdminOrderDetailsPage />} />
