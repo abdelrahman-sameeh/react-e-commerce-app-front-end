@@ -1,7 +1,13 @@
-import { ADD_PRODUCT, GET_ALL_PRODUCTS, GET_ERROR, GET_SPECIFIC_PRODUCTS, GET_SAME_PRODUCTS, DELETE_ONE_PRODUCT, UPDATE_ONE_PRODUCT } from "../type";
+import { ADD_PRODUCT, GET_ALL_PRODUCTS, GET_ERROR, GET_SPECIFIC_PRODUCTS, GET_SAME_PRODUCTS, DELETE_ONE_PRODUCT, UPDATE_ONE_PRODUCT, GET_LIST_OF_PRODUCTS_IN_SPECIFIC_CATEGORY, GET_LIST_OF_PRODUCTS_IN_SPECIFIC_BRAND } from "../type";
 
 const initialState = {
    products: [],
+   product: [],
+   sameProduct: [],
+   oneDeleted: [],
+   oneUpdated: [],
+   productsInCategory: [],
+   productsInBrand: [],
    loading: true
 }
 
@@ -43,10 +49,16 @@ const productReducer = (state = initialState, action) => {
             oneUpdated: action.payload,
             loading: false
          }
-      case GET_ERROR:
+      case GET_LIST_OF_PRODUCTS_IN_SPECIFIC_CATEGORY:
          return {
             ...state,
-            products: action.payload,
+            productsInCategory: action.payload,
+            loading: false
+         }
+      case GET_LIST_OF_PRODUCTS_IN_SPECIFIC_BRAND:
+         return {
+            ...state,
+            productsInBrand: action.payload,
             loading: false
          }
       default:

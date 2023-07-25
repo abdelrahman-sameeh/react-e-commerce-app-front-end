@@ -26,7 +26,16 @@ const AddProductToCartHook = () => {
          productId
       }
       // validation
-      if(!color){
+      // check if authorized
+      if (!localStorage.user) {
+         notify('قم بتسجيل الدخول من فضلك', 'warn')
+         setTimeout(() => {
+            window.location.href = '/login'
+         }, 1000);
+         return
+      }
+      
+      if (!color) {
          notify('من فضلك حدد لون', 'warn')
          return
       }
@@ -40,11 +49,14 @@ const AddProductToCartHook = () => {
 
    const addProductToCartResponse = useSelector(state => state.cart.addProductToCart)
    console.log(addProductToCartResponse);
-   
-   useEffect(()=>{
-      if(!loading){
-         if(addProductToCartResponse.status === 200){
+
+   useEffect(() => {
+      if (!loading) {
+         if (addProductToCartResponse.status === 200) {
             notify('تم الاضافه الى السله بنجاح', 'success')
+         }
+         if (addProductToCartResponse.status === 401) {
+            notify('قم بتسجيل الدخول من فضلك', 'error')
          }
       }
    }, [loading])
