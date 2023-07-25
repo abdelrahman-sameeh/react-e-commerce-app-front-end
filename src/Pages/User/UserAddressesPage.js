@@ -4,6 +4,10 @@ import UserSidebar from '../../Components/User/UserSidebar'
 import UserAddressesContainer from '../../Components/User/UserAddressesContainer'
 
 const UserAddressesPage = () => {
+   const user = JSON.parse(localStorage.user)
+   if(user.role !== 'user'){
+      window.location.href = ''
+   }
    return (
       <div className='page'>
          <div className="container">

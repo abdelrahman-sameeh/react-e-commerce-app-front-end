@@ -14,11 +14,22 @@ const AllCartItemsHook = () => {
    }, [])
 
    const getAllProductResponse = useSelector(state => state.cart.allCartItems)
+
+
+
    let cartItems, totalCartPrice=0, totalAfterDiscount;
-   if (getAllProductResponse && getAllProductResponse.data) {
+   if (getAllProductResponse && getAllProductResponse.data&&getAllProductResponse.data.data) {
       cartItems = getAllProductResponse.data.data.products
       totalCartPrice = getAllProductResponse.data.data.totalCartPrice
       totalAfterDiscount =  getAllProductResponse.data.data.totalAfterDiscount
+
+      // set cartId in localStorage
+      localStorage.cartId = getAllProductResponse.data.data._id
+
+      // set total price in localStorage
+      localStorage.totalPrice = getAllProductResponse.data.data.totalAfterDiscount ? 
+      getAllProductResponse.data.data.totalAfterDiscount :
+      getAllProductResponse.data.data.totalCartPrice
    }
 
 

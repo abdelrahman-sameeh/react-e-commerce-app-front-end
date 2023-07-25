@@ -11,6 +11,7 @@ import { wishListReducer } from './wishListReducer';
 import couponReducer from './couponReducer';
 import addressReducer from './addressReducer';
 import { cartReducer } from './cartReducer';
+import { orderReducer } from './orderReducer';
 
 
 
@@ -23,9 +24,10 @@ const rootReducer = combineReducers({
    user: userReducer,
    reviews: reviewsReducer,
    wishList: wishListReducer,
-   coupons: couponReducer,
+   coupons: couponReducer, 
    addresses: addressReducer,
-   cart: cartReducer
+   cart: cartReducer,
+   order: orderReducer
 })
 
 

@@ -31,7 +31,7 @@ const CartContainer = () => {
                   <span> السعر الاصلى: {totalCartPrice} جنية</span>
             }
 
-            <Link className='btn btn-dark w-100 ' to='/order/payMethod' > اتمام الشراء </Link>
+            <Link className='btn btn-dark w-100 ' to='/order/choseAddress' > اتمام الشراء </Link>
          </Col>
          <Col sm='12' md='9' lg='9' className="products mt-2">
             {
