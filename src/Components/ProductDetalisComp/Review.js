@@ -56,17 +56,17 @@ const Review = ({ review }) => {
         <div className='d-flex justify-content-between align-items-center'>
 
           <div className='gap-2 center'>
-            <div style={{ backgroundColor: avatarBgColors[Math.floor(Math.random() * avatarBgColors.length)]}} className="avatar">{review.user.name[0].toUpperCase()}</div>
+            <div style={{ backgroundColor: avatarBgColors[Math.floor(Math.random() * avatarBgColors.length)] }} className="avatar">{review.user.name[0].toUpperCase()}</div>
             <span className='bold fs-5'>{review.user.name}</span>
             <span className='text-warning'> <FontAwesomeIcon icon={faStar} />  {review.rating} </span>
           </div>
           <div>
             {
-              (review.user._id === user._id) &&
+              (user && review.user._id === user._id) &&
               <button onClick={handleUpdateChange} className='btn btn-dark ms-2'>تعديل </button>
             }
             {
-              (review.user._id === user._id || user.role === 'admin') &&
+              (user && (review.user._id === user._id || user.role === 'admin')) &&
               <button onClick={() => handleDeleteReview(review._id)} className='btn btn-dark'>حذف <FontAwesomeIcon icon={faTrash} />
                 {isPress && loading && <Spinner animation='border' variant='light' />}
               </button>

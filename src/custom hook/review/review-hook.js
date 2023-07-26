@@ -7,7 +7,11 @@ import Swal from 'sweetalert2'
 
 const ReviewHook = () => {
 
-   const user = JSON.parse(localStorage.user)
+   let user;
+
+   if (localStorage.user) {
+      user = JSON.parse(localStorage.user)
+   }
    const dispatch = useDispatch()
    // loading for delete review
    const [loading, setLoading] = useState(true)
@@ -90,7 +94,7 @@ const ReviewHook = () => {
          confirmButtonText: 'احذف!',
          cancelButtonText: 'تراجع'
 
-      }).then( async(result) => {
+      }).then(async (result) => {
          if (result.isConfirmed) {
             setLoading(true)
             setIsPress(true)

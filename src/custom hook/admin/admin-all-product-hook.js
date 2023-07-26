@@ -50,9 +50,7 @@ const AdminAllProductHook = () => {
                'تم حذف المنتج بنجاح',
                'success'
             )
-         } else {
-            notify('حدث خطأ اثناء الحذف', 'warn')
-         }
+         } 
       }
    }, [oneDeleted])
 

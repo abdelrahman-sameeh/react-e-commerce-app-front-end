@@ -34,6 +34,9 @@ import AdminUpdateCouponPage from "./Pages/Admin/AdminUpdateCouponPage";
 import UserAddAddressPage from "./Pages/User/UserAddAddressPage";
 import ProtectedRoute from './Components/Utilty/ProtectedRoute'
 import ProtectedRouteHook from './custom hook/auth/protected-route-hook'
+import ChoseAddressPage from "./Pages/User/ChoseeAddressPage";
+import ProductsInCategoryPage from "./Pages/Products/ProductsInCategoryPage";
+import ProductsInBrandPage from "./Pages/Products/ProductsInBrandPage";
 
 
 function App() {
@@ -57,6 +60,8 @@ function App() {
           <Route path="/forgetPassword" element={<ForgetPassword />} />
           <Route path="/verifyResetCode" element={<VerifyResetCodePage />} />
           <Route path="/setNewPassword" element={<SetNewPasswordPage />} />
+          <Route path="/category/:id/products" element={<ProductsInCategoryPage />} />
+          <Route path="/brand/:id/products" element={<ProductsInBrandPage />} />
 
           <Route element={<ProtectedRoute auth={isAdmin} />}>
             <Route path="/admin/allProducts" element={<AdminAllProductsPage />} />
@@ -80,6 +85,7 @@ function App() {
             <Route path="/user/addNewAddress" element={<UserAddAddressPage />} />
             <Route path="/edit-address/:id" element={<UserEditAddressPage />} />
             <Route path="/modify-profile" element={<UserModifyProfilePage />} />
+            <Route path="/order/choseAddress" element={<ChoseAddressPage />} />
           </Route>
 
         </Routes>

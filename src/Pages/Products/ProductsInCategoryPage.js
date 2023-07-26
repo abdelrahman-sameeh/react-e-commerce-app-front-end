@@ -7,7 +7,7 @@ import ProductComp from '../../Components/ProductDetalisComp/ProductComp'
 const ProductsInCategoryPage = () => {
    const [products, pagination, getNum] = ProductsInCategoryHook()
    return (
-      <div className='page'>
+      <div className='page'> 
          <div className="container my-5">
          <Row>
                {
