@@ -48,10 +48,13 @@ function NavbarApp() {
                     تسجيل الخروج
                   </NavDropdown.Item>
                 </NavDropdown>
-                <a href='/cart' style={{ textDecoration: 'none' }} className='center text-light underline-none'>
-                  <img className='w-20' src={cart} alt="" />
-                  العربه
-                </a>
+                {
+                  (user.role === 'user') &&
+                  <a href='/cart' style={{ textDecoration: 'none' }} className='center text-light underline-none'>
+                    <img className='w-20' src={cart} alt="" />
+                    العربه
+                  </a>
+                }
               </Nav>) : (<Nav className='d-flex flex1 gap-2'>
                 <input value={word} onChange={handleSearchByWord} className='form-control text-center' type="search" name="navbarSearch" placeholder='ابحث ...' />
                 <a href='/login' style={{ textDecoration: 'none' }} className='center text-light underline-none' >

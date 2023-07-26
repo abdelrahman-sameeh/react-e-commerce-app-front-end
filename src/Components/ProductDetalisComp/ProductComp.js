@@ -6,16 +6,35 @@ import favOn from '../../Images/fav-on.png'
 import rate from '../../Images/rate.png'
 import CRUDProductToWishListHook from '../../custom hook/wishList/CRUD-product-to-wish-list-hook'
 import { ToastContainer } from 'react-toastify'
+import AdminAllProductHook from '../../custom hook/admin/admin-all-product-hook'
 
 const ProductComp = ({ product }) => {
 
 
    const [wishListProducts, user, handleAddProductToWishList, handleRemoveProductFromWishList] = CRUDProductToWishListHook()
 
-
+   const [products, deleteProduct] = AdminAllProductHook()
 
    return (
       <div style={{ height: '350px', padding: '15px', }} className="rounded bg-light">
+
+         {/* controls */}
+         {
+            user && user.data && user.data.data && user.data.data.role === 'admin' &&
+            <div className='d-flex justify-content-between align-items-center'>
+               <form onSubmit={(e) => {
+                  e.preventDefault()
+                  deleteProduct(product._id)
+               }}>
+                  <button className='btn btn-dark'> ازاله </button>
+               </form>
+               <Link to={`/admin/edit/${product._id}`} >
+                  <button className='btn btn-dark'> تعديل </button>
+               </Link>
+            </div>
+
+         }
+
          <div style={{ height: '200px' }} className="image">
             <Link to={`/product/${product._id}`}>
                <img style={{ height: '200px', objectFit: 'contain' }} className='w-100 link' src={product.imageCover} alt="" />
@@ -38,7 +57,8 @@ const ProductComp = ({ product }) => {
                      </button>
                }
 
-            </div>}
+            </div>
+         }
          <div className="fs-5 my-2"> {product.title} </div>
          {
             product.description && <div className="desc text-black-50 my-2 "> {product.description.split(' ').slice(0, 10).join(' ')} </div>
@@ -53,7 +73,7 @@ const ProductComp = ({ product }) => {
             </div>
          </div>
          <ToastContainer />
-      </div>
+      </div >
    )
 }
 
