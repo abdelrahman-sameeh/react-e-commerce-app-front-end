@@ -1,7 +1,8 @@
+import { useDeleteData } from "../../hooks/useDeleteData"
 import { useGetAllData } from "../../hooks/useGetData"
 import { useInsertData } from "../../hooks/useInsertData"
 import { useUpdateDataWithoutImage } from "../../hooks/useUpdateData"
-import { ADD_CASH_ORDER, UPDATE_DELIVER_STATUS, USER_GET_ALL_ORDERS, UPDATE_PAY_STATUS } from "../type"
+import { ADD_CASH_ORDER, UPDATE_DELIVER_STATUS, USER_GET_ALL_ORDERS, UPDATE_PAY_STATUS, DELETE_ONE_ORDER } from "../type"
 
 export const addCashOrder = (cartId, address) => {
    return async (dispatch) => {
@@ -65,6 +66,23 @@ export const updateOrderPaidStatus = (orderId, data) => {
       } catch (err) {
          dispatch({
             type: UPDATE_PAY_STATUS,
+            payload: err.response
+         })
+      }
+   }
+}
+
+export const deleteOrder = (orderId) => {
+   return async (dispatch) => {
+      try {
+         const response = await useDeleteData(`/api/v1/orders/${orderId}`)
+         dispatch({
+            type: DELETE_ONE_ORDER,
+            payload: response
+         })
+      } catch (err) {
+         dispatch({
+            type: DELETE_ONE_ORDER,
             payload: err.response
          })
       }

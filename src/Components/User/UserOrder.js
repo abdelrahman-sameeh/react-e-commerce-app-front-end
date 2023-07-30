@@ -1,11 +1,11 @@
 import React from 'react'
 import UpdateOrderStatus from '../../custom hook/order/update-order-status'
 import { Spinner } from 'react-bootstrap'
+import DeleteOrderHook from '../../custom hook/order/delete-order-hook'
+import { ToastContainer } from 'react-toastify'
 
 const UserOrder = ({ order, numberOfOrder, user }) => {
    let products = order.cartItems || []
-
-
 
    const [
       payLoading,
@@ -20,12 +20,21 @@ const UserOrder = ({ order, numberOfOrder, user }) => {
       changePaidStatus
    ] = UpdateOrderStatus(order)
 
+
+   const [loading, isPress, handleDeleteOrder] = DeleteOrderHook()
+
    return (
       <div className='rounded border mt-2'>
 
          <div className="order-products bg-light rounded p-3">
-            <div className="order-number fs-4 bold">
-               طلب رقم {numberOfOrder + 1}
+            <div className="d-flex justify-content-between align-items-center">
+               <div className="order-number fs-4 bold">
+                  طلب رقم {numberOfOrder + 1}
+               </div>
+               <div onClick={() => handleDeleteOrder(order._id)} className="btn btn-dark">
+                  {loading && isPress && <Spinner variant='light' animation='border'/>}
+                  ازاله الطلب
+               </div>
             </div>
 
             {
@@ -128,6 +137,7 @@ const UserOrder = ({ order, numberOfOrder, user }) => {
             }
 
          </div>
+         <ToastContainer />
       </div>
    )
 }

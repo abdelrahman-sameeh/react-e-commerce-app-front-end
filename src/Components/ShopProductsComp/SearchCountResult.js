@@ -5,17 +5,18 @@ import BestSaleContainer from '../BestSale/BestSaleContainer'
 import SideFilter from './SideFilter'
 import ViewSearchProductHook from '../../custom hook/products/view-search-product-hook'
 import PaginationComponent from '../Utilty/PaginationComponent'
+import { Col } from 'react-bootstrap'
 
 const SearchCountResult = () => {
-  
+
 
    const [products, numberOfPages, getNum, handleSortDropDown] = ViewSearchProductHook()
- 
+
 
    return (
       <>
          <div className="searchCountResult d-flex justify-content-between my-3">
-            <div className="count-result fs-4 fw-bold">{(products ) && products.results} منتج متاح ...</div>
+            <div className="count-result fs-4 fw-bold">{(products) && products.results} منتج متاح ...</div>
             {/* start UnopDropdown */}
             <div className='search-count-text'>
                <UnopDropdown
@@ -47,9 +48,13 @@ const SearchCountResult = () => {
          {/* start content */}
          <div className="row">
             {/* side filter */}
-            <SideFilter />
+            <Col sm='12' md='4' lg='3' >
+               <SideFilter />
+            </Col>
             {/* content */}
-            <BestSaleContainer />
+            <Col sm='12' md='8' lg='9'>
+               <BestSaleContainer />
+            </Col>
          </div>
          {
             numberOfPages > 1 &&

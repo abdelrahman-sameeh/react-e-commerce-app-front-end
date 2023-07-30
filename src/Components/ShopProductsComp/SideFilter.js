@@ -9,7 +9,7 @@ const SideFilter = () => {
 
 
    return (
-      <Col lg='2' md='2' sm='12' className="side-filter" >
+      <div lg='2' md='2' sm='12' className="side-filter" >
          <div className="">
             <div className="fs-5">التصنيفات</div>
             <div className='d-flex justify-content-center align-items-center gap-2'>
@@ -56,7 +56,7 @@ const SideFilter = () => {
             </div>
 
          </div>
-      </Col>
+      </div>
    )
 }
 

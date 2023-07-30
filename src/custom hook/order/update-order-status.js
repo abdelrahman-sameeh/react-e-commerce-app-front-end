@@ -50,11 +50,11 @@ const UpdateOrderStatus = (order) => {
 
    const changePaidStatus = async (orderId) => {
       const data = { isPaid: isPaid == 'true' ? true : false }
-      setDeliverLoading(true)
-      setDeliverPress(true)
+      setPayLoading(true)
+      setPayPress(true)
       await dispatch(updateOrderPaidStatus(orderId, data))
-      setDeliverLoading(false)
-      setDeliverPress(false)
+      setPayLoading(false)
+      setPayPress(false)
    }
 
    const changePaidResponse = useSelector(state => state.order.payStatus)
